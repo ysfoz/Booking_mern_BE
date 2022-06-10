@@ -1,6 +1,13 @@
 import express from "express";
 
-import { createHotel,updateHotel,deleteHotel,getHotel,getHotels } from "../controllers/hotel.js";
+import {
+  createHotel,
+  updateHotel,
+  deleteHotel,
+  getHotel,
+  getHotels,
+} from "../controllers/hotel.js";
+import { verifyToken, verifyAdmin } from "../utils/verifyToken.js";
 
 const router = express.Router();
 
@@ -12,7 +19,7 @@ const router = express.Router();
  * @access private
  */
 
-router.post("/",createHotel);
+router.post("/",verifyToken, verifyAdmin, createHotel);
 
 /**
  * !UPDATE
@@ -22,7 +29,7 @@ router.post("/",createHotel);
  * @access private
  */
 
-router.put("/:id", updateHotel);
+router.put("/:id", verifyToken, verifyAdmin, updateHotel);
 
 /**
  * !DELETE
@@ -32,7 +39,7 @@ router.put("/:id", updateHotel);
  * @access private
  */
 
-router.delete("/:id", deleteHotel );
+router.delete("/:id", verifyToken, verifyAdmin, deleteHotel);
 
 /**
  * !GET ONE
