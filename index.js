@@ -1,6 +1,8 @@
 import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import cookieParser from "cookie-parser";
+
 
 import router from "./routes/router.js";
 
@@ -30,6 +32,9 @@ mongoose.connection.on("connected", () => {
 const app = express();
 
 // !Middlewares
+
+// cookieParser
+app.use(cookieParser())
 
 // Json 
 app.use(express.json())
