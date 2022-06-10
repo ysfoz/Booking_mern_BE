@@ -4,8 +4,12 @@ import mongoose from "mongoose";
 
 import router from "./routes/router.js";
 
+
+// Dotenv
 dotenv.config();
 
+
+// Database Connection
 const connect = async () => {
   try {
     await mongoose.connect(process.env.MONGO)
@@ -25,9 +29,28 @@ mongoose.connection.on("connected", () => {
 
 const app = express();
 
+// !Middlewares
+
+// Json 
 app.use(express.json())
+
+// Router
 app.use("/api", router);
 
+
+// Error Handling
+app.use((err,req,res,next)=>{
+const errorStatus =  err.status || 500
+const errorMessage = err.message || "Something went wrong!!!"
+return res.status(errorStatus).json({
+  success:false,
+  message:errorMessage,
+  stack:err.stack
+})
+})
+
+
+// Run Server
 app.listen(8080, () => {
   connect();
   console.log("Server run on Port 8080");
