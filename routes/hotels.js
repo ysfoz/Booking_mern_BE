@@ -6,6 +6,7 @@ import {
   deleteHotel,
   getHotel,
   getHotels,
+  countByCity
 } from "../controllers/hotel.js";
 import { verifyToken, verifyAdmin } from "../utils/verifyToken.js";
 
@@ -48,7 +49,7 @@ router.delete("/:id", verifyToken, verifyAdmin, deleteHotel);
  * @description
  * @access public
  */
-router.get("/:id", getHotel);
+router.get("/find/:id", getHotel);
 
 /**
  * !GET ALL
@@ -59,5 +60,18 @@ router.get("/:id", getHotel);
  */
 
 router.get("/", getHotels);
+/**
+ * !GET Count hotels by name
+ * @method get
+ * @route /api/hotel/countbycity?cities=....
+ * @description
+ * @access public
+ */
+
+router.get("/countbycity", countByCity);
+
+
+
+
 
 export default router;

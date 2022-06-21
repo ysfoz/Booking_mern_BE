@@ -2,21 +2,19 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
-
+import cors from "cors";
 
 import router from "./routes/router.js";
-
 
 // Dotenv
 dotenv.config();
 
-
 // Database Connection
 const connect = async () => {
   try {
-    await mongoose.connect(process.env.MONGO)
-     console.log("connected mongodb");
-    } catch (error) {
+    await mongoose.connect(process.env.MONGO);
+    console.log("connected mongodb");
+  } catch (error) {
     throw error;
   }
 };
@@ -33,27 +31,29 @@ const app = express();
 
 // !Middlewares
 
-// cookieParser
-app.use(cookieParser())
+// Cors
 
-// Json 
-app.use(express.json())
+app.use(cors())
+
+// cookieParser
+app.use(cookieParser());
+
+// Json
+app.use(express.json());
 
 // Router
 app.use("/api", router);
 
-
 // Error Handling
-app.use((err,req,res,next)=>{
-const errorStatus =  err.status || 500
-const errorMessage = err.message || "Something went wrong!!!"
-return res.status(errorStatus).json({
-  success:false,
-  message:errorMessage,
-  stack:err.stack
-})
-})
-
+app.use((err, req, res, next) => {
+  const errorStatus = err.status || 500;
+  const errorMessage = err.message || "Something went wrong!!!";
+  return res.status(errorStatus).json({
+    success: false,
+    message: errorMessage,
+    stack: err.stack,
+  });
+});
 
 // Run Server
 app.listen(8080, () => {

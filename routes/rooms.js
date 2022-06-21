@@ -40,7 +40,7 @@ router.delete("/:id/:hotelid", verifyToken, verifyAdmin, deleteRoom);
 /**
  * !GET ONE
  * @method get
- * @route api/room:id
+ * @route api/room:id/:hotelid
  * @description
  * @access public
  */
@@ -49,7 +49,7 @@ router.get("/:id", getRoom);
 /**
  * !GET ALL
  * @method get
- * @route /api/room
+ * @route /api/room/:id
  * @description
  * @access public
  */
