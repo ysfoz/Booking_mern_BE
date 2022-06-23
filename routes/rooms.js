@@ -10,17 +10,17 @@ const router = express.Router();
 /**
  * !CREATE
  * @method post
- * @route api/room:hotelid
+ * @route api/room/:hotelid
  * @description
  * @access private
  */
 
-router.post("/:hotelid",verifyToken, verifyAdmin, createRoom);
+router.post("/:id",verifyToken, verifyAdmin, createRoom);
 
 /**
  * !UPDATE
  * @method put
- * @route api/room:id
+ * @route api/room/:id
  * @description
  * @access private
  */
@@ -30,7 +30,7 @@ router.put("/:id", verifyToken, verifyAdmin, updateRoom);
 /**
  * !DELETE
  * @method delete
- * @route api/room:id
+ * @route api/room/:id
  * @description
  * @access private
  */
