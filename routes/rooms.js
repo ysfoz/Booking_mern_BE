@@ -1,7 +1,7 @@
 import express from "express";
 
 import {
-createRoom,deleteRoom,updateRoom,getRoom,getRooms
+createRoom,deleteRoom,updateRoom,getRoom,getRooms,updateRoomAvailability
 } from "../controllers/room.js";
 import { verifyToken, verifyAdmin } from "../utils/verifyToken.js";
 
@@ -55,5 +55,16 @@ router.get("/:id", getRoom);
  */
 
 router.get("/", getRooms);
+
+
+/**
+ * !UPDATE
+ * @method put
+ * @route api/room/availableity/:id
+ * @description
+ * @access private
+ */
+
+ router.put("/availability/:id",  updateRoomAvailability);
 
 export default router;
