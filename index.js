@@ -33,7 +33,7 @@ const app = express();
 
 // Cors
 
-app.use(cors())
+app.use(cors());
 
 // cookieParser
 app.use(cookieParser());

@@ -1,7 +1,12 @@
 import express from "express";
 
 import {
-createRoom,deleteRoom,updateRoom,getRoom,getRooms,updateRoomAvailability
+  createRoom,
+  deleteRoom,
+  updateRoom,
+  getRoom,
+  getRooms,
+  updateRoomAvailability,
 } from "../controllers/room.js";
 import { verifyToken, verifyAdmin } from "../utils/verifyToken.js";
 
@@ -15,7 +20,7 @@ const router = express.Router();
  * @access private
  */
 
-router.post("/:id",verifyToken, verifyAdmin, createRoom);
+router.post("/:id", verifyToken, verifyAdmin, createRoom);
 
 /**
  * !UPDATE
@@ -40,7 +45,7 @@ router.delete("/:id/:hotelid", verifyToken, verifyAdmin, deleteRoom);
 /**
  * !GET ONE
  * @method get
- * @route api/room:id/:hotelid
+ * @route api/room/:id/:hotelid
  * @description
  * @access public
  */
@@ -56,7 +61,6 @@ router.get("/:id", getRoom);
 
 router.get("/", getRooms);
 
-
 /**
  * !UPDATE
  * @method put
@@ -65,6 +69,6 @@ router.get("/", getRooms);
  * @access private
  */
 
- router.put("/availability/:id",  updateRoomAvailability);
+router.put("/availability/:id", updateRoomAvailability);
 
 export default router;

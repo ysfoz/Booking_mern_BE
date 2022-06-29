@@ -75,7 +75,7 @@ export const updateRoomAvailability = async (req, res, next) => {
         $push: { "roomNumbers.$.unavailableDates": req.body.date },
       }
     );
-    res.status(200).json("Room status has been updated");
+    res.status(200).json("The rooms have been reserved");
   } catch (error) {
     next(error);
   }

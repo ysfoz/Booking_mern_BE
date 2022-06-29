@@ -8,7 +8,7 @@ import {
   getUsers,
 } from "../controllers/user.js";
 
-import { verifyToken, verifyAdmin, verifyUser} from "../utils/verifyToken.js"
+import { verifyToken, verifyAdmin, verifyUser } from "../utils/verifyToken.js";
 
 const router = express.Router();
 
@@ -30,7 +30,7 @@ router.post("/", createUser);
  * @access private
  */
 
-router.put("/:id",verifyToken,verifyUser, updateUser);
+router.put("/:id", verifyToken, verifyUser, updateUser);
 
 /**
  * !DELETE
@@ -40,7 +40,7 @@ router.put("/:id",verifyToken,verifyUser, updateUser);
  * @access private
  */
 
-router.delete("/:id",verifyToken,verifyUser, deleteUser);
+router.delete("/:id", verifyToken, verifyUser, deleteUser);
 
 /**
  * !GET ONE
@@ -49,7 +49,7 @@ router.delete("/:id",verifyToken,verifyUser, deleteUser);
  * @description
  * @access public
  */
-router.get("/:id",verifyToken,verifyUser, getUser);
+router.get("/:id", verifyToken, verifyUser, getUser);
 
 /**
  * !GET ALL
@@ -59,6 +59,6 @@ router.get("/:id",verifyToken,verifyUser, getUser);
  * @access public
  */
 
-router.get("/",verifyToken,verifyAdmin, getUsers);
+router.get("/", verifyToken, verifyAdmin, getUsers);
 
 export default router;

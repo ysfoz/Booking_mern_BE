@@ -8,7 +8,7 @@ import {
   getHotels,
   countByCity,
   countByType,
-  getHotelRooms
+  getHotelRooms,
 } from "../controllers/hotel.js";
 import { verifyToken, verifyAdmin } from "../utils/verifyToken.js";
 
@@ -22,7 +22,7 @@ const router = express.Router();
  * @access private
  */
 
-router.post("/",verifyToken, verifyAdmin, createHotel);
+router.post("/", verifyToken, verifyAdmin, createHotel);
 
 /**
  * !UPDATE
@@ -47,7 +47,7 @@ router.delete("/:id", verifyToken, verifyAdmin, deleteHotel);
 /**
  * !GET ONE
  * @method get
- * @route api/hotel:id
+ * @route api/hotel/find/:id
  * @description
  * @access public
  */
@@ -89,10 +89,6 @@ router.get("/countbytype", countByType);
  * @access public
  */
 
- router.get("/room/:id", getHotelRooms);
-
-
-
-
+router.get("/room/:id", getHotelRooms);
 
 export default router;

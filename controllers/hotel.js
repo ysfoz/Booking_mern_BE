@@ -96,8 +96,8 @@ export const getHotelRooms = async (req, res, next) => {
       hotel.rooms.map((room) => {
         return Room.findById(room);
       })
-      );
-      res.status(200).json(roomList)
+    );
+    res.status(200).json(roomList);
   } catch (error) {
     next(error);
   }
