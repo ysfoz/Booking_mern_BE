@@ -29,6 +29,8 @@ mongoose.connection.on("connected", () => {
 
 const app = express();
 
+const PORT = process.env.PORT
+
 // !Middlewares
 
 // Cors
@@ -56,7 +58,7 @@ app.use((err, req, res, next) => {
 });
 
 // Run Server
-app.listen(8080, () => {
+app.listen(PORT, () => {
   connect();
-  console.log("Server run on Port 8080");
+  console.log(`Server run on Port ${PORT}`);
 });
